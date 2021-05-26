@@ -1,0 +1,14 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - kms
+  - decrypt
+  - --ciphertext-file=hatch-tv-mobile-app-firebase-adminsdk-movyd-6350426d74.json.enc
+  - --plaintext-file=hatch-tv-mobile-app-firebase-adminsdk-movyd-6350426d74.json
+  - --location=europe-west2
+  - --keyring=hatch-fb-ring
+  - --key=hatch-fb-key
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: app-engine-deploy
+  args: ['app', 'deploy']
+  timeout: '10m0s'
