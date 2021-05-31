@@ -7,7 +7,7 @@ import dotenv
 import os
 
 dotenv.load_dotenv(dotenv_path="app/.env", verbose=True)
-app = FastAPI()
+app = FastAPI(root_path="/")
 cred = credentials.Certificate("hatch-tv-mobile-app-firebase-adminsdk-movyd-6350426d74.json")
 defaultApp = initialize_app(cred)
 db = firestore.client()
@@ -58,6 +58,9 @@ def verify_token(access_token):
 
     return token
 
+@app.get("/")
+def health():
+    return {"message": "all healthy"}
 
 @app.post("/register")
 async def register_user(authUser: AuthUser):
