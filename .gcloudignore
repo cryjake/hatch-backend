@@ -12,7 +12,6 @@
 # below:
 .git
 .gitignore
-hatch-tv-mobile-app-firebase-adminsdk-movyd-6350426d74.json
 # Python pycache:
 __pycache__/
 Lib/

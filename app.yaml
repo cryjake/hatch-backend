@@ -1,5 +1,5 @@
 runtime: python37
-entrypoint: gunicorn --chdir app/ main:app -w 4 -k uvicorn.workers.UvicornWorker
+entrypoint: gunicorn --chdir app -w 4 -k uvicorn.workers.UvicornWorker main:app
 env: standard
 
 service: 'hatch-backend'
