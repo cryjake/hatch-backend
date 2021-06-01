@@ -1,16 +1,13 @@
-from google.cloud.firestore_v1.client import Client
-from fastapi import Depends, HTTPException, status, Header
+from fastapi import FastAPI, Header, status, HTTPException
 from firebase_admin import auth
-from app.db.firebase import db_client
-from app.models.user import User
 
 
-def get_db_client() -> Client:
-    return db_client
-
-
-def get_current_user(db: Client = Depends(get_db_client),
-                     access_token: str = Header(None)) -> str:
+def verify_token(access_token):
+    """
+    Method to verify the id_token passed in as a header using fb_admin verify_id_token
+    :param access_token: ID token passed in as a header
+    :return: the verified token object
+    """
     if not access_token:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Missing Access Token")
@@ -26,4 +23,5 @@ def get_current_user(db: Client = Depends(get_db_client),
     if not token:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Invalid Token")
-    return token['uid']
+
+    return token

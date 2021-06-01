@@ -2,6 +2,8 @@ from typing import Optional
 from fastapi import FastAPI
 import datetime
 from pydantic import BaseModel, HttpUrl
+from fireo.models import Model
+from fireo.fields import TextField, NumberField, ReferenceField, BooleanField, ListField, DateTime, NestedModel
 
 
 class Name(BaseModel):
@@ -19,17 +21,13 @@ class Location(BaseModel):
     lng: float
 
 
-class User(BaseModel):
-    username: Optional[str]
-    name: Optional[Name]
-    dob: Optional[str]
-    userType: Optional[str]
-    displayImage: Optional[Image] = None
-    bio: Optional[str] = None
-    gender: Optional[str] = None
-    phone: Optional[str] = None
-    location: Optional[Location] = None
-
-class AuthUser(BaseModel):
-    email: str
-    password: str
+class User(Model):
+    username: TextField
+    name: Name
+    dob: TextField
+    userType: TextField
+    displayImage: Image
+    bio: TextField
+    gender: TextField
+    phone: TextField
+    location: Location

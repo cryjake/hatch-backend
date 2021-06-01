@@ -138,3 +138,7 @@ dmypy.json
 cython_debug/
 
 Scripts/
+
+hatch-tv-mobile-app-firebase-adminsdk-movyd-6350426d74.json
+
+.vscode
