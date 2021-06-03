@@ -2,6 +2,7 @@ from typing import Any, Dict, List, Optional, Union
 from pydantic import BaseSettings, AnyHttpUrl
 import dotenv
 import os
+from pathlib import Path
 
 dotenv.load_dotenv(dotenv_path="app/.env", verbose=True)
 
@@ -19,6 +20,8 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
     PROJECT_NAME: str = "Hatch TV Backend"
+
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
     class Config:
 

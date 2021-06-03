@@ -1,12 +1,15 @@
-from firebase_admin import (App, credentials, auth, firestore, initialize_app)
+from firebase_admin import (App, credentials, firestore, initialize_app)
 from firebase_admin.credentials import Certificate
 from firebase import Auth, Firebase
-from app.core.config import settings
 from google.cloud.firestore_v1.client import Client
 import fireo
+import os
+from app.core.config import settings
 
 cred: Certificate = Certificate(
-    "hatch-tv-mobile-app-firebase-adminsdk-movyd-6350426d74.json")
+    os.path.join(
+        settings.BASE_DIR,
+        "hatch-tv-mobile-app-firebase-adminsdk-movyd-6350426d74.json"))
 defaultApp: App = initialize_app(cred)
 db_client: Client = firestore.client()
 
@@ -24,5 +27,6 @@ firebaseConfig = {
 fb: Firebase = Firebase(firebaseConfig)
 authFB: Auth = fb.auth()
 
-fireo.connection(
-    from_file="hatch-tv-mobile-app-firebase-adminsdk-movyd-6350426d74.json")
+fireo.connection(from_file=os.path.join(
+    settings.BASE_DIR,
+    "hatch-tv-mobile-app-firebase-adminsdk-movyd-6350426d74.json"))

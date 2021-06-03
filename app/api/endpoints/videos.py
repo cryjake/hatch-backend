@@ -21,7 +21,7 @@ def read_videos(
     return vidoes
 
 
-@router.post("/", response_model=List[schemas.Video])
+@router.post("/")
 def create_video(
         *,
         obj_in: schemas.VideoCreate,

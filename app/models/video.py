@@ -1,21 +1,24 @@
 from typing import Optional, List
 from fastapi import FastAPI
 import datetime
+from fireo.fields.base_field import Field
 from pydantic import BaseModel, HttpUrl
 from fireo.models import Model
-from fireo.fields import TextField, NumberField, ReferenceField, BooleanField, ListField, DateTime
+from fireo.fields import TextField, NumberField, ReferenceField, BooleanField, ListField, DateTime, IDField
 from .user import User
 from .challenge import Challenge
 
 
 class Video(Model):
-    url: TextField
-    uploadDate: datetime.datetime
-    uploadedBy: ReferenceField(User)
-    challenge: ReferenceField(Challenge)
-    isDemo: BooleanField
-    duration: NumberField
-    categoryTags: ListField
+    # id: IDField()
+    url: Field()
+
+    # uploadDate: DateTime(auto=True)
+    # uploadedBy: ReferenceField(User)
+    # challenge: ReferenceField(Challenge)
+    # isDemo: BooleanField()
+    # duration: NumberField()
+    # categoryTags: ListField()
 
 
 class Comment(Model):

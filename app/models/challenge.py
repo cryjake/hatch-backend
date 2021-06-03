@@ -13,3 +13,6 @@ class Challenge(Model):
     createdBy: ReferenceField(User)
     isSponsored: BooleanField
     rewardValue: NumberField
+
+    class Meta:
+        collection_name = "challenges"

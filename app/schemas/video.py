@@ -3,7 +3,7 @@ from pydantic import BaseModel, HttpUrl
 
 
 class VideoBase(BaseModel):
-    url: HttpUrl
+    url: str
     isDemo: bool
     duration: int
     challenge: str

@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel, HttpUrl
 
 
@@ -23,11 +24,11 @@ class Location(BaseModel):
 
 class User(BaseModel):
     username: str
-    name: Name
-    dob: str
+    name: Optional[Name]
+    dob: Optional[str]
     userType: str
-    displayImage: Image
-    bio: str
-    gender: str
-    phone: str
-    location: Location
+    displayImage: Optional[Image] = None
+    bio: Optional[str] = None
+    gender: Optional[str] = None
+    phone: Optional[str] = None
+    location: Optional[Location] = None

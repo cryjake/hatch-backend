@@ -3,6 +3,7 @@ from starlette.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.api.api import api_router
 from app.db import firebase
+# from firebase_orm import models
 
 app = FastAPI(title=settings.PROJECT_NAME,
               openapi_url=f"{settings.API_V1_STR}/openapi.json")
